@@ -1,0 +1,9 @@
+  move right 2
+  move up 1
+
+  attack object
+  wait 3 seconds
+  move down 2
+
+  attack enemy
+  jump

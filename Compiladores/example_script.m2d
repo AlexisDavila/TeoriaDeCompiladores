@@ -1,0 +1,54 @@
+// Script de demostración Mini2DLang
+// Este script muestra todas las características del lenguaje
+
+// Configuración del entorno
+set gravity = 0.8
+set world_width = 800
+set world_height = 600
+set player_speed = 5
+
+// Declaración de sprites
+sprite player at (100, 400)
+sprite enemy at (600, 400)
+
+// Animación inicial
+player.set_animation("idle")
+enemy.set_animation("idle")
+
+// Secuencia de acciones para el jugador
+player.run(8)
+
+// Bucle para movimiento
+loop 5 {
+    player.move(10, 0)
+}
+
+player.jump()
+
+// Pausa
+loop 3 {
+    player.move(0, 0)
+}
+
+player.run(-6)
+
+loop 4 {
+    player.move(-8, 0)
+}
+
+player.stop()
+player.crouch()
+
+// Acciones del enemigo
+enemy.run(-5)
+
+loop 6 {
+    enemy.move(-7, 0)
+}
+
+enemy.jump()
+enemy.stop()
+
+// Salto final del jugador
+player.stop()
+player.jump()

@@ -1,0 +1,227 @@
+// Script de animación avanzada Mini2DLang
+// Simula una escena animada con múltiples personajes
+
+// ===== CONFIGURACIÓN DEL MUNDO =====
+set gravity = 0.9
+set world_width = 800
+set world_height = 600
+set player_speed = 6
+
+// ===== DECLARACIÓN DE PERSONAJES =====
+sprite hero at (50, 400)
+sprite companion at (150, 400)
+sprite enemy1 at (700, 400)
+sprite enemy2 at (750, 350)
+
+// ===== ESCENA 1: ENTRADA DE LOS HÉROES =====
+hero.set_animation("running")
+companion.set_animation("running")
+
+// El héroe entra corriendo
+hero.run(8)
+loop 15 {
+    hero.move(12, 0)
+}
+
+// El compañero lo sigue
+companion.run(7)
+loop 12 {
+    companion.move(11, 0)
+}
+
+// Ambos se detienen
+hero.stop()
+companion.stop()
+hero.set_animation("idle")
+companion.set_animation("idle")
+
+// ===== ESCENA 2: SALTOS SINCRONIZADOS =====
+// Primera serie de saltos
+loop 3 {
+    hero.jump()
+    companion.jump()
+}
+
+// Pausa corta
+loop 2 {
+    hero.move(0, 0)
+    companion.move(0, 0)
+}
+
+// ===== ESCENA 3: MOVIMIENTO DE BATALLA =====
+// El héroe avanza agresivamente
+hero.set_animation("running")
+hero.run(10)
+loop 20 {
+    hero.move(10, 0)
+}
+
+// El compañero cubre el flanco
+companion.run(5)
+loop 15 {
+    companion.move(8, 0)
+}
+
+// ===== ESCENA 4: LOS ENEMIGOS REACCIONAN =====
+enemy1.set_animation("running")
+enemy2.set_animation("running")
+
+// Enemigo 1 corre hacia los héroes
+enemy1.run(-9)
+loop 25 {
+    enemy1.move(-11, 0)
+}
+
+// Enemigo 2 salta y avanza
+enemy2.jump()
+enemy2.run(-7)
+loop 20 {
+    enemy2.move(-9, 0)
+}
+
+// ===== ESCENA 5: COMBATE - MOVIMIENTOS EVASIVOS =====
+// El héroe salta sobre el enemigo
+hero.jump()
+hero.run(6)
+loop 8 {
+    hero.move(8, 0)
+}
+
+// El compañero se agacha
+companion.crouch()
+loop 3 {
+    companion.move(0, 0)
+}
+
+// Enemigo 1 intenta atacar
+enemy1.jump()
+loop 5 {
+    enemy1.move(-5, 0)
+}
+
+// ===== ESCENA 6: CONTRAATAQUE =====
+// El compañero se levanta y salta
+companion.stop()
+companion.jump()
+companion.run(8)
+loop 10 {
+    companion.move(10, 0)
+}
+
+// Enemigo 2 retrocede
+enemy2.run(-6)
+loop 12 {
+    enemy2.move(-8, 0)
+}
+
+// ===== ESCENA 7: PERSECUCIÓN =====
+// Todos corren en una persecución épica
+hero.run(9)
+loop 15 {
+    hero.move(11, 0)
+}
+
+companion.run(8)
+loop 15 {
+    companion.move(10, 0)
+}
+
+enemy1.run(-7)
+loop 15 {
+    enemy1.move(-9, 0)
+}
+
+enemy2.run(-8)
+loop 15 {
+    enemy2.move(-10, 0)
+}
+
+// ===== ESCENA 8: SALTOS FINALES COORDINADOS =====
+// Gran salto del héroe
+hero.jump()
+hero.run(7)
+loop 10 {
+    hero.move(9, 0)
+}
+
+// El compañero salta también
+loop 2 {
+    companion.move(0, 0)
+}
+companion.jump()
+
+// Los enemigos saltan en retirada
+enemy1.jump()
+enemy2.jump()
+
+// ===== ESCENA 9: MOVIMIENTO CIRCULAR =====
+// El héroe hace un círculo (simulado con movimientos)
+hero.stop()
+hero.run(5)
+loop 5 {
+    hero.move(8, 0)
+}
+
+hero.run(-5)
+loop 5 {
+    hero.move(-8, 0)
+}
+
+hero.run(5)
+loop 5 {
+    hero.move(8, 0)
+}
+
+// ===== ESCENA 10: FORMACIÓN DE VICTORIA =====
+// El compañero se une al héroe
+companion.run(4)
+loop 10 {
+    companion.move(6, 0)
+}
+
+// Ambos saltan en victoria
+hero.jump()
+companion.jump()
+
+loop 3 {
+    hero.move(0, 0)
+    companion.move(0, 0)
+}
+
+// Segundo salto de victoria
+hero.jump()
+companion.jump()
+
+// ===== ESCENA 11: LOS ENEMIGOS HUYEN =====
+enemy1.set_animation("running")
+enemy2.set_animation("running")
+
+enemy1.run(-10)
+loop 30 {
+    enemy1.move(-12, 0)
+}
+
+enemy2.run(-9)
+loop 30 {
+    enemy2.move(-11, 0)
+}
+
+// ===== ESCENA FINAL: POSE DE VICTORIA =====
+hero.stop()
+companion.stop()
+hero.set_animation("idle")
+companion.set_animation("idle")
+
+// Último salto sincronizado
+loop 2 {
+    hero.move(0, 0)
+}
+hero.jump()
+companion.jump()
+
+// Crouch final
+loop 3 {
+    hero.move(0, 0)
+}
+hero.crouch()
+companion.crouch()
